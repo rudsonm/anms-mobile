@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Animals</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-searchbar ></ion-searchbar>
+  <ion-card *ngFor="let animal of animals">
+    <img src="http://s2.glbimg.com/AkMAuhK7l59y5NnVbyK__5ALWLg=/620x465/s.glbimg.com/jo/g1/f/original/2016/10/17/suricato.jpg"/>
+    <ion-card-header>
+      {{ animal.name }}
+    </ion-card-header>
+    <ion-card-content>
+      <div>
+        <b>Specie: {{ animal.specie }}</b>
+      </div>      
+      <div>
+        <b>Age: {{ animal.age }}</b>
+      </div>
+      <div>
+          <b>About: {{ animal.description }}</b>
+      </div>
+    </ion-card-content>
+    <button ion-button icon-start color="danger" full style="margin-bottom: 0" 
+            [navPush]="animalPage" [navParams]="animal">
+      <ion-icon name="heart"></ion-icon>
+      Adopt
+    </button>
+  </ion-card>
+</ion-content>

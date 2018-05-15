@@ -1,0 +1,44 @@
+<style>
+    .img-slide {
+        width: 310px;
+        height: 310px;
+    }
+
+</style>
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ animal.name }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-slides no-padding lazyLoading style="height: auto">
+        <ion-slide>
+            <img class="img-slide" src="http://www.portaldosanimais.com.br/blog/wp-content/gallery/fotos-de-suricatos/Fotos-de-Suricatos-8.jpg" alt="">
+        </ion-slide>
+        <ion-slide>
+            <img class="img-slide" src="http://yourshot.nationalgeographic.com/u/fQYSUbVfts-T7pS2VP2wnKyN8wxywmXtY0-FwsgxqjzH3MHsNL3PfrLAIcbwD-HuFMJhR-vyvM3zaK_3EBMAXnIfsAfYzJS4OGbkIVl-YOf1-bWwpxgOCoEAzvzMP4hKpcDqoAhnltBKDrkm_eXfpzfi7Udd06RqLY0Bc8IRuN_4piCc4_j29QsgxwodNOQZ4rBF4muKxL6dRfso1N8/" alt="">
+        </ion-slide>
+        <ion-slide>
+            <img class="img-slide" src="https://i.ytimg.com/vi/EhryGSnv8xE/hqdefault.jpg" alt="">
+        </ion-slide>        
+    </ion-slides>
+    <ion-list>
+        <ion-item>
+            <b>Specie:</b> {{ animal.specie }}
+        </ion-item>
+        <ion-item>
+            <b>Age:</b> {{ animal.age }}
+        </ion-item>
+        <ion-item>
+            <b>Weight:</b> {{ animal.weight }}
+        </ion-item>
+        <ion-item>
+            <b>About: </b> {{ animal.description }}
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-fab right bottom>
+    <button ion-fab color="danger"><ion-icon name="heart"></ion-icon></button>
+</ion-fab>
