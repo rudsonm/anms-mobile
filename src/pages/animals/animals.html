@@ -1,33 +1,37 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Animals</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content>
   <ion-searchbar ></ion-searchbar>
-  <ion-card *ngFor="let animal of animals">
-    <img src="http://s2.glbimg.com/AkMAuhK7l59y5NnVbyK__5ALWLg=/620x465/s.glbimg.com/jo/g1/f/original/2016/10/17/suricato.jpg"/>
+  <ion-card *ngFor="let doacao of doacoes">
+    <img src="{{ (doacao.Animal.Fotos.length) ? 'http://localhost:49664/api/fotos/' + doacao.Animal.Fotos[0] : 'https://static.quizur.com/i/b/57c1c26fc0b812.5998420157c1c26fb156c9.51498011.png' }}"/>
     <ion-card-header>
-      {{ animal.name }}
+      {{ doacao.Animal.Nome }}
     </ion-card-header>
     <ion-card-content>
       <div>
-        <b>Specie: {{ animal.specie }}</b>
+        <b>Specie: {{ doacao.Animal.Especie }}</b>
       </div>      
       <div>
-        <b>Age: {{ animal.age }}</b>
+        <b>Age: {{ doacao.Animal.DataNascimento | age }} years</b>
       </div>
       <div>
-          <b>About: {{ animal.description }}</b>
+        <b>About: {{ doacao.Animal.Descricao }}</b>
       </div>
     </ion-card-content>
     <button ion-button icon-start color="danger" full style="margin-bottom: 0" 
-            [navPush]="animalPage" [navParams]="animal">
+            [navPush]="animalPage" [navParams]="doacao">
       <ion-icon name="heart"></ion-icon>
       Adopt
     </button>
   </ion-card>
 </ion-content>
+
+<ion-fab right bottom>
+  <button ion-fab color="secondary">
+      <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>

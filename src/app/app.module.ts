@@ -9,9 +9,24 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AnimalsPage } from '../pages/animals/animals';
 import { AnimalPage } from '../pages/animals/animal/animal';
+import { HttpModule } from '@angular/http';
+import { AgePipe } from './pipes/age.pipe';
+import { UsuarioService } from './services/usuario.service';
+import { AuthService } from './services/auth.service';
+import { RestService } from './services/rest.service';
+import { HttpClientModule } from '@angular/common/http';
+import { LoadingService } from './services/loading.service';
+import { ToastService } from './services/toast.service';
 
 @NgModule({
   declarations: [
+    MyApp,
+    HomePage,
+    AnimalsPage,
+    AnimalPage,
+    AgePipe
+  ],
+  entryComponents: [
     MyApp,
     HomePage,
     AnimalsPage,
@@ -20,19 +35,20 @@ import { AnimalPage } from '../pages/animals/animal/animal';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage,
-    AnimalsPage,
-    AnimalPage
-  ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LoadingService,
+    ToastService,
+    RestService,
+    AuthService,
+    UsuarioService    
   ]
 })
 export class AppModule {}

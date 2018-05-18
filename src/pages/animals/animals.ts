@@ -1,20 +1,34 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AnimalPage } from './animal/animal';
-import { Animal } from '../../models/animal';
+import { RestService } from '../../app/services/rest.service';
+import { UsuarioService } from '../../app/services/usuario.service';
+
 
 @Component({
   selector: 'page-animals',
   templateUrl: 'animals.html',
 })
 export class AnimalsPage {
-  animalPage = AnimalPage;
-  animals: Array<Animal>;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.animals = [
-      new Animal('Tobias', 'Dog', 'It is not a dog'),
-      new Animal('Biri the penguim', 'Penguim', 'It is just a penguimm')
-    ];
+  public animalPage = AnimalPage;
+  public doacoes;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private service: RestService
+  ) { }
+
+  ionViewCanEnter() {
+    this.getDoacoes();
   }
+
+  getDoacoes() {
+    this.service.get("doacoes", {
+      status: "EM_ANDAMENTO"
+    }).subscribe(res =>
+      this.doacoes = res
+    );
+  }  
 
 }

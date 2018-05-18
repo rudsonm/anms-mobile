@@ -1,16 +1,26 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Authenticate
+      Credentials
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="
+  background-image: url('http://1080x1920-1080p.backgroundwallpaper.pictures/pictures/1080p-cell-phone-wallpapers-hd-395.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+">
+  <div style="color: white">
+    <div>
+      <ion-icon name="paw"></ion-icon>
+    </div>
+    <p>What about to adopt instead of buying?</p>
+    <p>Here you can find an animal friend to spend all days with you.</p>
+  </div>
   <ion-card>
-    <ion-card-header style="background-color: #2ecc71; color: white">
-      Credencials
-    </ion-card-header>
     <ion-card-content>
       <ion-list>
         <ion-item>
@@ -22,15 +32,20 @@
           <ion-input type="password" [(ngModel)]="password"></ion-input>
         </ion-item>
       </ion-list>
-      <div style="padding: 0.8rem 0">
-        <button ion-button float-left clear small>
-          Forgot Password
-        </button>
-        <button ion-button icon-left float-right (click)="authenticate(email, password)">
+      <div style="padding: 0.8rem 0">        
+        <button ion-button full icon-left float-right (click)="login(email, password)">
           <ion-icon name="send"></ion-icon>
-          <div>Enter</div>
+          <div>Submit</div>
         </button>
-      </div>      
-    </ion-card-content>    
+      </div>
+    </ion-card-content>
+    <div>
+      <button ion-button float-left clear small>
+        Forgot Password
+      </button>
+      <button ion-button float-right clear small>
+        Create Account
+      </button>
+    </div>
   </ion-card>
 </ion-content>
