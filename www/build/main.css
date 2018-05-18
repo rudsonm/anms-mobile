@@ -25677,3 +25677,7 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-bottom));
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
+
+.item-input:not(.input-has-focus):not(.input-has-value):not(:last-child) .input, .item-input:not(.input-has-focus):not(.input-has-value):not(:last-child) .select, .item-select .input, .item-select .select {
+  border-bottom: 1px solid #dedede;
+}

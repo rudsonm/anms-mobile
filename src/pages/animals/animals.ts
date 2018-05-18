@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AnimalPage } from './animal/animal';
 import { RestService } from '../../app/services/rest.service';
 import { UsuarioService } from '../../app/services/usuario.service';
+import { DonatePage } from './donate/donate';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { UsuarioService } from '../../app/services/usuario.service';
 })
 export class AnimalsPage {
   public animalPage = AnimalPage;
+  public donatePage = DonatePage;
   public doacoes;
 
   constructor(

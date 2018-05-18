@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Donate</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            Pet Info
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-label stacked>Name</ion-label>
+                    <ion-input type="text" [(ngModel)]="doacao.Animal.Nome"></ion-input>
+                </ion-item>
+                
+                <ion-item>
+                    <ion-label stacked>Class</ion-label>
+                    <ion-select [(ngModel)]="doacao.Animal.Filo">
+                        <ion-option value="MAMIFERO">Mammal</ion-option>
+                        <ion-option value="AVE">Bird</ion-option>
+                        <ion-option value="PEIXE">Fish</ion-option>
+                        <ion-option value="REPTIL">Reptile</ion-option>
+                        <ion-option value="INVERTEBRADO">Amphibian</ion-option>
+                        <ion-option value="ARTROPODE">Arthropod</ion-option>
+                    </ion-select>
+                </ion-item>
+            
+                <ion-item>
+                    <ion-label stacked>Specie</ion-label>
+                    <ion-input type="text" [(ngModel)]="doacao.Animal.Especie"></ion-input>
+                </ion-item>
+                
+                <ion-item>
+                    <ion-label stacked>Date of birth</ion-label>
+                    <ion-input type="date" [(ngModel)]="doacao.Animal.DataNascimento"></ion-input>
+                </ion-item>
+            
+                <ion-item>
+                    <ion-label stacked>Weight</ion-label>
+                    <ion-input type="number" [(ngModel)]="doacao.Animal.Peso"></ion-input>
+                </ion-item>
+            
+                <ion-item>
+                    <ion-label stacked>About</ion-label>
+                    <ion-textarea [(ngModel)]="doacao.Animal.Descricao"></ion-textarea>
+                </ion-item>                
+            </ion-list>
+        </ion-card-content>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <button ion-button full color="danger">Cancel</button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button full color="secondary" (click)="sendDonate(doacao)">Confirm</button>
+                </ion-col>
+            </ion-row>            
+        </ion-grid>
+    </ion-card>
+</ion-content>

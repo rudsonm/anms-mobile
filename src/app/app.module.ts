@@ -17,6 +17,7 @@ import { RestService } from './services/rest.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingService } from './services/loading.service';
 import { ToastService } from './services/toast.service';
+import { DonatePage } from '../pages/animals/donate/donate';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,15 @@ import { ToastService } from './services/toast.service';
     HomePage,
     AnimalsPage,
     AnimalPage,
+    DonatePage,
     AgePipe
   ],
   entryComponents: [
     MyApp,
     HomePage,
     AnimalsPage,
-    AnimalPage
+    AnimalPage,
+    DonatePage
   ],
   imports: [
     BrowserModule,

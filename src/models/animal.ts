@@ -1,8 +1,8 @@
 export class Animal {
     constructor(        
-        public Nome:string,
-        public Especie:string,
-        public Descricao:string,
+        public Nome?:string,
+        public Especie?:string,
+        public Descricao?:string,
         public Id?:number,
         public Ativo?:boolean,
         public Filo?:string,
