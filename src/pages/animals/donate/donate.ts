@@ -5,6 +5,7 @@ import { UsuarioService } from "../../../app/services/usuario.service";
 import { Animal } from "../../../models/animal";
 import { RestService } from "../../../app/services/rest.service";
 import { ToastService } from "../../../app/services/toast.service";
+import { Camera, CameraOptions } from "@ionic-native/camera";
 
 @Component({
     selector: 'app-donate',
@@ -17,7 +18,8 @@ export class DonatePage {
         private navCtrl: NavController, 
         private usuarioService: UsuarioService,
         private service: RestService,
-        private toast: ToastService
+        private toast: ToastService,
+        private camera: Camera
     ) {
         this.doacao = new Doacao(usuarioService.usuario, new Animal());
     }
@@ -28,6 +30,21 @@ export class DonatePage {
             .subscribe(res => {
                 this.toast.show("Donation saved successfully.");
                 this.navCtrl.pop();
+            });
+    }
+
+    openGallery() {
+        const options: CameraOptions = {
+            quality: 100,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
+            sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM
+        }
+        this.camera
+            .getPicture(options)
+            .then(data => {
+                console.log(data);
             });
     }
 }

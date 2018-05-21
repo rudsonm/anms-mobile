@@ -1,16 +1,21 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
+import { LoadingService } from "./loading.service";
 
 @Injectable()
 export class RestService {
     private url = "http://localhost:49664/api/";
     private headers: HttpHeaders;
     
-    constructor(private http: HttpClient) {
+    constructor(
+        private http: HttpClient,
+        private loading: LoadingService
+        
+    ) {
         this.headers = new HttpHeaders();        
     }
 
-    addHeader(type:string, content: string) {
+    addHeader(type: string, content: string) {
         this.headers = this.headers.append(type, content);
     }
 

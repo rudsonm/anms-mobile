@@ -5,7 +5,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar ></ion-searchbar>
+  
+  <ion-searchbar></ion-searchbar>
+  
   <ion-card *ngFor="let doacao of doacoes">
     <img src="{{ (doacao.Animal.Fotos.length) ? 'http://localhost:49664/api/fotos/' + doacao.Animal.Fotos[0] : 'https://static.quizur.com/i/b/57c1c26fc0b812.5998420157c1c26fb156c9.51498011.png' }}"/>
     <ion-card-header>

@@ -40,11 +40,17 @@
 </ion-fab>
 
 <ion-fab right bottom *ngIf="doacao.Usuario.Id === usuario.Id">
-    <button ion-fab color="primary"><ion-icon name="menu"></ion-icon></button>
+    <button ion-fab color="primary">
+        <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-fab-list side="top">
-      <button ion-fab color="secondary"><ion-icon name="people"></ion-icon></button>
+      <button ion-fab color="secondary" (click)="openCandidateSelectModal()">
+          <ion-icon name="people"></ion-icon>
+        </button>
     </ion-fab-list>
     <ion-fab-list side="left">
-      <button ion-fab color="danger" (click)="openDonationRemoveAlert()"><ion-icon name="trash"></ion-icon></button>
+      <button ion-fab color="danger" (click)="openDonationRemoveAlert()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
     </ion-fab-list>
 </ion-fab>

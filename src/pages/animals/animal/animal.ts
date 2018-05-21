@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams } from "ionic-angular";
+import { NavController, NavParams, ModalController } from "ionic-angular";
 import { Doacao } from "../../../models/doacao";
 import { AlertController } from "ionic-angular/components/alert/alert-controller";
 import { Candidatura } from "../../../models/candidatura";
@@ -7,6 +7,7 @@ import { Usuario } from "../../../models/usuario";
 import { RestService } from "../../../app/services/rest.service";
 import { UsuarioService } from "../../../app/services/usuario.service";
 import { ToastService } from "../../../app/services/toast.service";
+import { CandidateModal } from "../candidate/candidate";
 
 @Component({
     selector: 'app-animal',
@@ -21,7 +22,8 @@ export class AnimalPage {
         private alertCtrl: AlertController,
         private service: RestService,
         private usuarioService: UsuarioService,
-        private toast: ToastService
+        private toast: ToastService,
+        private modalCtrl: ModalController
     ) {
         this.usuario = usuarioService.usuario;
         this.doacao = navParams.data;
@@ -34,6 +36,17 @@ export class AnimalPage {
             .subscribe(res => {
                 this.navCtrl.pop();
             });
+    }
+
+    openCandidateSelectModal() {
+        let modal = this.modalCtrl.create(CandidateModal, {
+            usuario: this.usuario,
+            doacao: this.doacao
+        });
+        modal.onDidDismiss(candidate => {
+            console.log(candidate);
+        });
+        modal.present();
     }
 
     openDonationRemoveAlert() {

@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Select a candidate for {{ donate.Animal.Nome }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+    <ion-list>
+        <ion-item *ngFor="let candidate of candidatures" (click)="openCandidateConfirmAlert(candidate)">
+            <ion-avatar item-start>
+                <img src="http://c12.incisozluk.com.tr/res/incisozluk//11508/2/1291882_o7dce.jpg">
+            </ion-avatar>
+            <ion-row>
+                <ion-col col-10>
+                    <h2>{{ candidate.Usuario.Nome }}</h2>
+                </ion-col>
+                <ion-col col-2>
+                    <p style="font-size: 1.2rem">{{ candidate.DataCadastro | date: 'dd/MM' }}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <p>{{ candidate.Motivo }}</p>
+            </ion-row>            
+        </ion-item>
+    </ion-list>
+    <button ion-button full color="danger" (click)="dismiss()">
+        Close
+    </button>
+</ion-content>

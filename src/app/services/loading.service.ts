@@ -19,7 +19,7 @@ export class LoadingService {
             spinner: 'crescent'
         });
         this.active = true;
-        this.loading.present();        
+        this.loading.present();
     }
 
     dismiss() {
