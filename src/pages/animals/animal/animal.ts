@@ -16,6 +16,7 @@ import { CandidateModal } from "../candidate/candidate";
 export class AnimalPage {
     public usuario: Usuario;
     public doacao: Doacao;
+    public candidatura: Candidatura;
     constructor(
         private navCtrl: NavController, 
         private navParams: NavParams, 
@@ -36,6 +37,11 @@ export class AnimalPage {
             .subscribe(res => {
                 this.navCtrl.pop();
             });
+    }
+
+    ionViewCanEnter() {
+        if(this.usuario.Id != this.doacao.Usuario.Id)
+            this.getCandidature(this.usuario.Id, this.doacao.Id);
     }
 
     openCandidateSelectModal() {
@@ -79,21 +85,65 @@ export class AnimalPage {
             },
             {
                 text: 'Send',
-                handler: reason => {
-                    this.service.post(
-                        "solicitacoes-adocao",
-                        new Candidatura(
-                            this.doacao,
-                            this.usuarioService.usuario,
-                            reason
-                        )
-                    ).subscribe(res => 
-                        this.toast.show("Candidatura enviada com sucesso.")
-                    );
+                handler: res => {
+                    this.sendCandidature(this.doacao, this.usuario, res.reason);
                 },
                 cssClass: 'secondary'
             }]
         });
         alert.present();
+    }
+
+    openCancelCandidatureAlert(candidatura) {
+        let alert = this.alertCtrl.create({
+            title: 'Cancel Candidature',
+            subTitle: `
+                Are you shure to cancel your candidature?
+                <p>${this.candidatura.Motivo}</p>
+            `,
+            buttons: [{
+                text: 'Cancel',
+                role: 'cancel'
+            }, {
+                text: 'Confirm',
+                handler: () => {
+                    this.removeCandidature(this.candidatura);
+                }
+            }]
+        })
+    }
+
+    removeCandidature(candidature) {
+        this.service
+            .delete("solicitacoes-adocao", candidature.Id)
+            .subscribe(res => {
+                this.toast.show("Solicitação cancelada com sucesso.");
+                this.candidatura = null;
+            });
+    }
+
+    getCandidature(usuario?: number, doacao?: number) {
+        this.service
+            .get("solicitacoes-adocao", { 
+                doacao: doacao || 0, 
+                usuario: usuario || 0,
+                status: "PENDENTE"
+            })
+            .subscribe(res => {
+                this.candidatura = (res as Array<Candidatura>).length ? res[0] : null;
+            });
+    }
+
+    sendCandidature(donate, user, reason) {
+        this.service.post(
+            "solicitacoes-adocao",
+            new Candidatura(
+                this.doacao,
+                this.usuarioService.usuario,
+                reason
+            )
+        ).subscribe(res => 
+            this.toast.show("Solicitação de adoção enviada com sucesso.")
+        );
     }
 }

@@ -6,7 +6,7 @@
 </style>
 
 <ion-header>
-    <ion-navbar>
+    <ion-navbar color="primary">
         <ion-title>{{ doacao.Animal.Nome }}</ion-title>
     </ion-navbar>
 </ion-header>
@@ -34,8 +34,11 @@
 </ion-content>
 
 <ion-fab right bottom *ngIf="doacao.Usuario.Id !== usuario.Id">
-    <button ion-fab color="danger" (click)="openReasonAlert()">
+    <button ion-fab color="danger" (click)="openReasonAlert()" *ngIf="candidatura != null">
         <ion-icon name="heart"></ion-icon>
+    </button>
+    <button ion-fab color="danger" (click)="openCancelCandidatureAlert(candidatura)" *ngIf="candidatura == null">
+        <ion-icon name="trash"></ion-icon>
     </button>
 </ion-fab>
 
@@ -44,13 +47,13 @@
         <ion-icon name="menu"></ion-icon>
     </button>
     <ion-fab-list side="top">
-      <button ion-fab color="secondary" (click)="openCandidateSelectModal()">
-          <ion-icon name="people"></ion-icon>
+        <button ion-fab color="secondary" (click)="openCandidateSelectModal()">
+            <ion-icon name="people"></ion-icon>
         </button>
     </ion-fab-list>
     <ion-fab-list side="left">
-      <button ion-fab color="danger" (click)="openDonationRemoveAlert()">
-          <ion-icon name="trash"></ion-icon>
+        <button ion-fab color="danger" (click)="openDonationRemoveAlert()">
+            <ion-icon name="trash"></ion-icon>
         </button>
     </ion-fab-list>
 </ion-fab>

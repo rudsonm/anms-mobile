@@ -20,6 +20,7 @@ import { LoadingService } from './services/loading.service';
 import { ToastService } from './services/toast.service';
 import { DonatePage } from '../pages/animals/donate/donate';
 import { CandidateModal } from '../pages/animals/candidate/candidate';
+import { SignUpModal } from '../pages/home/signup/signup.modal';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CandidateModal } from '../pages/animals/candidate/candidate';
     AnimalPage,
     DonatePage,
     AgePipe,
-    CandidateModal
+    CandidateModal,
+    SignUpModal
   ],
   entryComponents: [
     MyApp,
@@ -37,7 +39,8 @@ import { CandidateModal } from '../pages/animals/candidate/candidate';
     AnimalsPage,
     AnimalPage,
     DonatePage,
-    CandidateModal
+    CandidateModal,
+    SignUpModal
   ],
   imports: [
     BrowserModule,

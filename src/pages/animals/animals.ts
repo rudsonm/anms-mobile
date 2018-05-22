@@ -22,12 +22,14 @@ export class AnimalsPage {
   ) { }
 
   ionViewCanEnter() {
-    this.getDoacoes();
+    this.obterDoacoes();
   }
 
-  getDoacoes() {
+  obterDoacoes(filtro?: any) {
+    console.log(filtro);
     this.service.get("doacoes", {
-      status: "EM_ANDAMENTO"
+      status: "EM_ANDAMENTO",
+      animal_nome: filtro || ""
     }).subscribe(res =>
       this.doacoes = res
     );
