@@ -29,6 +29,9 @@ export class CandidateModal {
             .get("solicitacoes-adocao", { doacao: donate.Id, status: "PENDENTE" })
             .subscribe(res => {
                 this.candidatures = (res as Array<Candidatura>);
+
+                if(!this.candidatures.length)
+                    this.dismiss()
             });
     }
 
@@ -39,11 +42,12 @@ export class CandidateModal {
     openCandidateConfirmAlert(candidate: Candidatura) {
         let confirm = this.alertCtrl.create({
             title: 'Confirm Candidate',
-            message: 'Are you shure to select '
-                     .concat(candidate.Usuario.Nome)
-                     .concat(' to adopt ')
-                     .concat(this.donate.Animal.Nome)
-                     .concat('?'),
+            message: 'Are you shure to select '.concat(
+                candidate.Usuario.Nome,
+                ' to adopt ',
+                this.donate.Animal.Nome,
+                '?'
+            ),
             buttons: [
                 { text: 'Disagree' },
                 { 

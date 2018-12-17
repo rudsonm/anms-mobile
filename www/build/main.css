@@ -25681,3 +25681,35 @@ ion-navbar.toolbar {
 .item-input:not(.input-has-focus):not(.input-has-value):not(:last-child) .input, .item-input:not(.input-has-focus):not(.input-has-value):not(:last-child) .select, .item-select .input, .item-select .select {
   border-bottom: 1px solid #dedede;
 }
+
+page-animals .card-header-image span {
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  padding: 12px 16px;
+  font-size: 24px;
+  font-weight: 300;
+  background-color: #000;
+  opacity: 0.6;
+  width: 100%;
+}
+
+page-animals .card-header-image {
+  position: relative;
+  max-height: 60%;
+  overflow: hidden;
+}
+
+page-animals .card-header-image img {
+  display: block;
+  border-radius: 2px 2px 0 0;
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  border-style: none;
+}

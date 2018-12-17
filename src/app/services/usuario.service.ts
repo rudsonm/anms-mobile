@@ -6,7 +6,7 @@ import { RestService } from "./rest.service";
 
 @Injectable()
 export class UsuarioService {
-    private url = "localhost:49664/api/usuarios";
+    private url = "localhost:23456/api/usuarios";
     private _usuario: Usuario;
 
     constructor(

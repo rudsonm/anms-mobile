@@ -4,7 +4,7 @@ import { LoadingService } from "./loading.service";
 
 @Injectable()
 export class RestService {
-    private url = "http://localhost:49664/api/";
+    private url = "http://localhost:23456/api/";
     private headers: HttpHeaders;
     
     constructor(

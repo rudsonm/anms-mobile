@@ -143,7 +143,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\rudsonm\Git\anms-mobile\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title text-center>\n\n      Credentials\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content style="\n\n  opacity: 0.9;\n\n  background-image: url(\'../../assets/imgs/cat-background.jpg\');\n\n  -webkit-background-size: cover;\n\n  -moz-background-size: cover;\n\n  -o-background-size: cover;\n\n  background-size: cover;\n\n">\n\n\n\n  <div style="\n\n      color: white;\n\n      text-align: center; \n\n      text-shadow: 2px 0 0 black; \n\n      margin: 15% 0 10%;\n\n      padding: 0 0.5rem 0 0.5rem;\n\n      ">\n\n    <div style="font-size: 5rem">\n\n      <ion-icon name="paw"></ion-icon>\n\n    </div>\n\n    <div>\n\n      <h5>What about to adopt instead of buying?</h5>\n\n      <i>Here you can find an animal friend to share <br> all the good moments with you.</i>\n\n    </div>\n\n  </div>\n\n  <ion-card>\n\n    <ion-card-content>\n\n      <ion-list>\n\n        <ion-item>\n\n          <ion-label floating>Email</ion-label>\n\n          <ion-input type="text" [(ngModel)]="email"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-label floating>Password</ion-label>\n\n          <ion-input type="password" [(ngModel)]="password"></ion-input>\n\n        </ion-item>\n\n      </ion-list>\n\n      <div style="padding: 0.8rem 0">        \n\n        <button ion-button full icon-left float-right (click)="login(email, password)">\n\n          <ion-icon name="send"></ion-icon>\n\n          <div>Submit</div>\n\n        </button>\n\n      </div>\n\n    </ion-card-content>\n\n    <div>\n\n      <button ion-button float-left clear small>\n\n        Forgot Password\n\n      </button>\n\n      <button ion-button float-right clear small (click)="openSignUpModal()">\n\n        Create Account\n\n      </button>\n\n    </div>\n\n  </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\rudsonm\Git\anms-mobile\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Git\anms-mobile\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title text-center>\n\n      Credentials\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content style="\n\n  opacity: 0.9;\n\n  background-image: url(\'../../assets/imgs/cat-background.jpg\');\n\n  -webkit-background-size: cover;\n\n  -moz-background-size: cover;\n\n  -o-background-size: cover;\n\n  background-size: cover;\n\n">\n\n\n\n  <div style="\n\n      color: white;\n\n      text-align: center; \n\n      text-shadow: 2px 0 0 black; \n\n      margin: 15% 0 10%;\n\n      padding: 0 0.5rem 0 0.5rem;\n\n      ">\n\n    <div style="font-size: 5rem">\n\n      <ion-icon name="paw"></ion-icon>\n\n    </div>\n\n    <div>\n\n      <h5>What about to adopt instead of buying?</h5>\n\n      <i>Here you can find an animal friend to share <br> all the good moments with you.</i>\n\n    </div>\n\n  </div>\n\n  <ion-card>\n\n    <ion-card-content>\n\n      <ion-list>\n\n        <ion-item>\n\n          <ion-label floating>Email</ion-label>\n\n          <ion-input type="text" [(ngModel)]="email"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-label floating>Password</ion-label>\n\n          <ion-input type="password" [(ngModel)]="password"></ion-input>\n\n        </ion-item>\n\n      </ion-list>\n\n      <div style="padding: 0.8rem 0">        \n\n        <button ion-button full icon-left float-right (click)="login(email, password)">\n\n          <ion-icon name="send"></ion-icon>\n\n          <div>Submit</div>\n\n        </button>\n\n      </div>\n\n    </ion-card-content>\n\n    <div>\n\n      <button ion-button float-left clear small>\n\n        Forgot Password\n\n      </button>\n\n      <button ion-button float-right clear small (click)="openSignUpModal()">\n\n        Create Account\n\n      </button>\n\n    </div>\n\n  </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Git\anms-mobile\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3__app_services_usuario_service__["a" /* UsuarioService */],
@@ -191,19 +191,21 @@ var AnimalsPage = /** @class */ (function () {
         this.donatePage = __WEBPACK_IMPORTED_MODULE_4__donate_donate__["a" /* DonatePage */];
     }
     AnimalsPage.prototype.ionViewCanEnter = function () {
-        this.getDoacoes();
+        this.obterDoacoes();
     };
-    AnimalsPage.prototype.getDoacoes = function () {
+    AnimalsPage.prototype.obterDoacoes = function (filtro) {
         var _this = this;
+        console.log(filtro);
         this.service.get("doacoes", {
-            status: "EM_ANDAMENTO"
+            status: "EM_ANDAMENTO",
+            animal_nome: filtro || ""
         }).subscribe(function (res) {
             return _this.doacoes = res;
         });
     };
     AnimalsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-animals',template:/*ion-inline-start:"C:\Users\rudsonm\Git\anms-mobile\src\pages\animals\animals.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title>Animals</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  \n\n  <ion-searchbar [(ngModel)]="filtro" (ionInput)="obterDoacoes(filtro)"></ion-searchbar>\n\n  \n\n  <ion-card *ngFor="let doacao of doacoes">\n\n    <img src="{{ (doacao.Animal.Fotos.length) ? \'http://localhost:49664/api/fotos/\' + doacao.Animal.Fotos[0] : \'https://static.quizur.com/i/b/57c1c26fc0b812.5998420157c1c26fb156c9.51498011.png\' }}"/>\n\n    <ion-card-header>\n\n      {{ doacao.Animal.Nome }}\n\n    </ion-card-header>\n\n    <ion-card-content>\n\n      <div>\n\n        <b>Specie: {{ doacao.Animal.Especie }}</b>\n\n      </div>      \n\n      <div>\n\n        <b>Age: {{ doacao.Animal.DataNascimento | age }} years</b>\n\n      </div>\n\n      <div>\n\n        <b>About: {{ doacao.Animal.Descricao }}</b>\n\n      </div>\n\n    </ion-card-content>\n\n    <button ion-button icon-start color="danger" full style="margin-bottom: 0" \n\n            [navPush]="animalPage" [navParams]="doacao">\n\n      <ion-icon name="heart"></ion-icon>\n\n      Adopt\n\n    </button>\n\n  </ion-card>\n\n</ion-content>\n\n\n\n<ion-fab right bottom>\n\n  <button ion-fab color="secondary" [navPush]="donatePage">\n\n      <ion-icon name="add"></ion-icon>\n\n  </button>\n\n</ion-fab>'/*ion-inline-end:"C:\Users\rudsonm\Git\anms-mobile\src\pages\animals\animals.html"*/,
+            selector: 'page-animals',template:/*ion-inline-start:"C:\Git\anms-mobile\src\pages\animals\animals.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title>Animals</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  \n\n  <ion-searchbar [(ngModel)]="filtro" (ionInput)="obterDoacoes(filtro)"></ion-searchbar>\n\n  \n\n  <ion-card *ngFor="let doacao of doacoes">\n\n    <div class=\'card-header-image\'>\n\n      <img src="{{ (doacao.Animal.Fotos.length) ? \'http://localhost:23456/api/fotos/\' + doacao.Animal.Fotos[0] : \'https://static.quizur.com/i/b/57c1c26fc0b812.5998420157c1c26fb156c9.51498011.png\' }}"/>\n\n      <span>\n\n        {{ doacao.Animal.Nome }}\n\n      </span>\n\n    </div>\n\n    <!-- <ion-card-header>{{ doacao.Animal.Nome }}</ion-card-header> -->\n\n    <ion-card-content>\n\n      <div>\n\n        <b>Specie: {{ doacao.Animal.Especie }}</b>\n\n      </div>      \n\n      <div>\n\n        <b>Age: {{ doacao.Animal.DataNascimento | age }} years</b>\n\n      </div>\n\n      <div>\n\n        <b>About: {{ doacao.Animal.Descricao }}</b>\n\n      </div>\n\n    </ion-card-content>\n\n    <button ion-button icon-start color="danger" full style="margin-bottom: 0" \n\n            [navPush]="animalPage" [navParams]="doacao">\n\n      <ion-icon name="heart"></ion-icon>\n\n      Adopt\n\n    </button>\n\n  </ion-card>\n\n</ion-content>\n\n\n\n<ion-fab right bottom>\n\n  <button ion-fab color="secondary" [navPush]="donatePage">\n\n      <ion-icon name="add"></ion-icon>\n\n  </button>\n\n</ion-fab>'/*ion-inline-end:"C:\Git\anms-mobile\src\pages\animals\animals.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -342,6 +344,7 @@ var AnimalPage = /** @class */ (function () {
             .delete("solicitacoes-adocao", candidature.Id)
             .subscribe(function (res) {
             _this.toast.show("Solicitação cancelada com sucesso.");
+            _this.candidatura = null;
         });
     };
     AnimalPage.prototype.getCandidature = function (usuario, doacao) {
@@ -353,7 +356,7 @@ var AnimalPage = /** @class */ (function () {
             status: "PENDENTE"
         })
             .subscribe(function (res) {
-            _this.candidatura = res[0];
+            _this.candidatura = res.length ? res[0] : null;
         });
     };
     AnimalPage.prototype.sendCandidature = function (donate, user, reason) {
@@ -364,12 +367,17 @@ var AnimalPage = /** @class */ (function () {
     };
     AnimalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'app-animal',template:/*ion-inline-start:"C:\Users\rudsonm\Git\anms-mobile\src\pages\animals\animal\animal.html"*/'<style>\n\n    .img-slide {\n\n        width: 310px;\n\n        height: 310px;\n\n    }\n\n</style>\n\n\n\n<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-title>{{ doacao.Animal.Nome }}</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-slides no-padding lazyLoading style="height: auto">\n\n        <ion-slide *ngFor="let img of doacao.Animal.Fotos">\n\n            <img class="img-slide" src="{{\'http://localhost:49664/api/fotos/\' + img}}" alt="">\n\n        </ion-slide>\n\n    </ion-slides>\n\n    <ion-list>\n\n        <ion-item>\n\n            <b>Specie:</b> {{ doacao.Animal.Especie }}\n\n        </ion-item>\n\n        <ion-item>\n\n            <b>Age:</b> {{ doacao.Animal.DataNascimento | age }} years\n\n        </ion-item>\n\n        <ion-item>\n\n            <b>Weight:</b> {{ doacao.Animal.Peso }}kg\n\n        </ion-item>\n\n        <ion-item>\n\n            <b>About:</b> {{ doacao.Animal.Descricao }}\n\n        </ion-item>\n\n    </ion-list>\n\n</ion-content>\n\n\n\n<ion-fab right bottom *ngIf="doacao.Usuario.Id !== usuario.Id">\n\n    <button ion-fab color="danger" (click)="openReasonAlert()" *ngIf="candidatura != null">\n\n        <ion-icon name="heart"></ion-icon>\n\n    </button>\n\n    <button ion-fab color="danger" (click)="openCancelCandidatureAlert(candidatura)" *ngIf="candidatura == null">\n\n        <ion-icon name="trash"></ion-icon>\n\n    </button>\n\n</ion-fab>\n\n\n\n<ion-fab right bottom *ngIf="doacao.Usuario.Id === usuario.Id">\n\n    <button ion-fab color="primary">\n\n        <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-fab-list side="top">\n\n        <button ion-fab color="secondary" (click)="openCandidateSelectModal()">\n\n            <ion-icon name="people"></ion-icon>\n\n        </button>\n\n    </ion-fab-list>\n\n    <ion-fab-list side="left">\n\n        <button ion-fab color="danger" (click)="openDonationRemoveAlert()">\n\n            <ion-icon name="trash"></ion-icon>\n\n        </button>\n\n    </ion-fab-list>\n\n</ion-fab>'/*ion-inline-end:"C:\Users\rudsonm\Git\anms-mobile\src\pages\animals\animal\animal.html"*/
+            selector: 'app-animal',template:/*ion-inline-start:"C:\Git\anms-mobile\src\pages\animals\animal\animal.html"*/'<style>\n\n    .img-slide {\n\n        width: 310px;\n\n        height: 310px;\n\n    }\n\n</style>\n\n\n\n<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-title>{{ doacao.Animal.Nome }}</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-slides no-padding lazyLoading style="height: auto">\n\n        <ion-slide *ngFor="let img of doacao.Animal.Fotos">\n\n            <img class="img-slide" src="{{\'http://localhost:23456/api/fotos/\' + img}}" alt="">\n\n        </ion-slide>\n\n    </ion-slides>\n\n    <ion-list>\n\n        <ion-item>\n\n            <b>Specie:</b> {{ doacao.Animal.Especie }}\n\n        </ion-item>\n\n        <ion-item>\n\n            <b>Age:</b> {{ doacao.Animal.DataNascimento | age }} years\n\n        </ion-item>\n\n        <ion-item>\n\n            <b>Weight:</b> {{ doacao.Animal.Peso }}kg\n\n        </ion-item>\n\n        <ion-item>\n\n            <b>About:</b> {{ doacao.Animal.Descricao }}\n\n        </ion-item>\n\n    </ion-list>\n\n</ion-content>\n\n\n\n<ion-fab right bottom *ngIf="doacao.Usuario.Id !== usuario.Id">\n\n    <button ion-fab color="danger" (click)="openReasonAlert()" *ngIf="candidatura != null">\n\n        <ion-icon name="heart"></ion-icon>\n\n    </button>\n\n    <button ion-fab color="danger" (click)="openCancelCandidatureAlert(candidatura)" *ngIf="candidatura == null">\n\n        <ion-icon name="trash"></ion-icon>\n\n    </button>\n\n</ion-fab>\n\n\n\n<ion-fab right bottom *ngIf="doacao.Usuario.Id === usuario.Id">\n\n    <button ion-fab color="primary">\n\n        <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-fab-list side="top">\n\n        <button ion-fab color="secondary" (click)="openCandidateSelectModal()">\n\n            <ion-icon name="people"></ion-icon>\n\n        </button>\n\n    </ion-fab-list>\n\n    <ion-fab-list side="left">\n\n        <button ion-fab color="danger" (click)="openDonationRemoveAlert()">\n\n            <ion-icon name="trash"></ion-icon>\n\n        </button>\n\n    </ion-fab-list>\n\n</ion-fab>'/*ion-inline-end:"C:\Git\anms-mobile\src\pages\animals\animal\animal.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular_components_alert_alert_controller__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular_components_alert_alert_controller__["a" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__app_services_rest_service__["a" /* RestService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_services_rest_service__["a" /* RestService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__app_services_usuario_service__["a" /* UsuarioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__app_services_usuario_service__["a" /* UsuarioService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__app_services_toast_service__["a" /* ToastService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__app_services_toast_service__["a" /* ToastService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */]) === "function" && _g || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular_components_alert_alert_controller__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_4__app_services_rest_service__["a" /* RestService */],
+            __WEBPACK_IMPORTED_MODULE_5__app_services_usuario_service__["a" /* UsuarioService */],
+            __WEBPACK_IMPORTED_MODULE_6__app_services_toast_service__["a" /* ToastService */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */]])
     ], AnimalPage);
     return AnimalPage;
-    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=animal.js.map
@@ -401,7 +409,7 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.autenticar = function (email, senha) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        return this.http.post("http://localhost:49664/api/usuarios/autenticar", this.httpParamSerializerJQLike({
+        return this.http.post("http://localhost:23456/api/usuarios/autenticar", this.httpParamSerializerJQLike({
             grant_type: 'password',
             username: email,
             password: senha
@@ -460,6 +468,8 @@ var CandidateModal = /** @class */ (function () {
             .get("solicitacoes-adocao", { doacao: donate.Id, status: "PENDENTE" })
             .subscribe(function (res) {
             _this.candidatures = res;
+            if (!_this.candidatures.length)
+                _this.dismiss();
         });
     };
     CandidateModal.prototype.dismiss = function (candidate) {
@@ -469,11 +479,7 @@ var CandidateModal = /** @class */ (function () {
         var _this = this;
         var confirm = this.alertCtrl.create({
             title: 'Confirm Candidate',
-            message: 'Are you shure to select '
-                .concat(candidate.Usuario.Nome)
-                .concat(' to adopt ')
-                .concat(this.donate.Animal.Nome)
-                .concat('?'),
+            message: 'Are you shure to select '.concat(candidate.Usuario.Nome, ' to adopt ', this.donate.Animal.Nome, '?'),
             buttons: [
                 { text: 'Disagree' },
                 {
@@ -486,14 +492,12 @@ var CandidateModal = /** @class */ (function () {
     };
     CandidateModal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'app-candidate-modal',template:/*ion-inline-start:"C:\Users\rudsonm\Git\anms-mobile\src\pages\animals\candidate\candidate.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-title text-center>Select a candidate for {{ donate.Animal.Nome }}</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content no-padding>\n\n    <ion-list>\n\n        <ion-item *ngFor="let candidate of candidatures" (click)="openCandidateConfirmAlert(candidate)">\n\n            <ion-avatar item-start>\n\n                <img src="http://c12.incisozluk.com.tr/res/incisozluk//11508/2/1291882_o7dce.jpg">\n\n            </ion-avatar>\n\n            <ion-row>\n\n                <ion-col col-10>\n\n                    <h2>{{ candidate.Usuario.Nome }}</h2>\n\n                </ion-col>\n\n                <ion-col col-2>\n\n                    <p style="font-size: 1.2rem">{{ candidate.DataCadastro | date: \'dd/MM\' }}</p>\n\n                </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n                <p>{{ candidate.Motivo }}</p>\n\n            </ion-row>            \n\n        </ion-item>\n\n    </ion-list>\n\n    <button ion-button full color="danger" (click)="dismiss()">\n\n        Close\n\n    </button>\n\n</ion-content>'/*ion-inline-end:"C:\Users\rudsonm\Git\anms-mobile\src\pages\animals\candidate\candidate.html"*/
+            selector: 'app-candidate-modal',template:/*ion-inline-start:"C:\Git\anms-mobile\src\pages\animals\candidate\candidate.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-title text-center>Select a candidate for {{ donate.Animal.Nome }}</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content no-padding>\n\n    <ion-list>\n\n        <ion-item *ngFor="let candidate of candidatures" (click)="openCandidateConfirmAlert(candidate)">\n\n            <ion-avatar item-start>\n\n                <img src="http://c12.incisozluk.com.tr/res/incisozluk//11508/2/1291882_o7dce.jpg">\n\n            </ion-avatar>\n\n            <ion-row>\n\n                <ion-col col-10>\n\n                    <h2>{{ candidate.Usuario.Nome }}</h2>\n\n                </ion-col>\n\n                <ion-col col-2>\n\n                    <p style="font-size: 1.2rem">{{ candidate.DataCadastro | date: \'dd/MM\' }}</p>\n\n                </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n                <p>{{ candidate.Motivo }}</p>\n\n            </ion-row>            \n\n        </ion-item>\n\n    </ion-list>\n\n    <button ion-button full color="danger" (click)="dismiss()">\n\n        Close\n\n    </button>\n\n</ion-content>'/*ion-inline-end:"C:\Git\anms-mobile\src\pages\animals\candidate\candidate.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__app_services_rest_service__["a" /* RestService */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__app_services_rest_service__["a" /* RestService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__app_services_rest_service__["a" /* RestService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object])
     ], CandidateModal);
     return CandidateModal;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=candidate.js.map
@@ -564,7 +568,7 @@ var DonatePage = /** @class */ (function () {
     };
     DonatePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'app-donate',template:/*ion-inline-start:"C:\Users\rudsonm\Git\anms-mobile\src\pages\animals\donate\donate.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-title>Donate</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-card>\n\n        <ion-card-header>\n\n            Pet Info\n\n        </ion-card-header>\n\n        <ion-card-content>\n\n            <ion-list>\n\n                <ion-item>\n\n                    <ion-label stacked>Name</ion-label>\n\n                    <ion-input type="text" [(ngModel)]="doacao.Animal.Nome"></ion-input>\n\n                </ion-item>\n\n                \n\n                <ion-item>\n\n                    <ion-label stacked>Class</ion-label>\n\n                    <ion-select [(ngModel)]="doacao.Animal.Filo">\n\n                        <ion-option value="MAMIFERO">Mammal</ion-option>\n\n                        <ion-option value="AVE">Bird</ion-option>\n\n                        <ion-option value="PEIXE">Fish</ion-option>\n\n                        <ion-option value="REPTIL">Reptile</ion-option>\n\n                        <ion-option value="INVERTEBRADO">Amphibian</ion-option>\n\n                        <ion-option value="ARTROPODE">Arthropod</ion-option>\n\n                    </ion-select>\n\n                </ion-item>\n\n            \n\n                <ion-item>\n\n                    <ion-label stacked>Specie</ion-label>\n\n                    <ion-input type="text" [(ngModel)]="doacao.Animal.Especie"></ion-input>\n\n                </ion-item>\n\n                \n\n                <ion-item>\n\n                    <ion-label stacked>Date of birth</ion-label>\n\n                    <ion-input type="date" [(ngModel)]="doacao.Animal.DataNascimento"></ion-input>\n\n                </ion-item>\n\n            \n\n                <ion-item>\n\n                    <ion-label stacked>Weight</ion-label>\n\n                    <ion-input type="number" [(ngModel)]="doacao.Animal.Peso"></ion-input>\n\n                </ion-item>\n\n            \n\n                <ion-item>\n\n                    <ion-label stacked>About</ion-label>\n\n                    <ion-textarea [(ngModel)]="doacao.Animal.Descricao"></ion-textarea>\n\n                </ion-item>                \n\n            </ion-list>\n\n            <button ion-button icon-left full (click)="openGallery()">\n\n                <ion-icon name="images"></ion-icon>\n\n                Photos\n\n            </button>\n\n        </ion-card-content>\n\n        <ion-grid>\n\n            <ion-row>\n\n                <ion-col>\n\n                    <button ion-button full color="danger" navPop>Cancel</button>\n\n                </ion-col>\n\n                <ion-col>\n\n                    <button ion-button full color="secondary" (click)="sendDonate(doacao)">Confirm</button>\n\n                </ion-col>\n\n            </ion-row>            \n\n        </ion-grid>\n\n    </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Users\rudsonm\Git\anms-mobile\src\pages\animals\donate\donate.html"*/
+            selector: 'app-donate',template:/*ion-inline-start:"C:\Git\anms-mobile\src\pages\animals\donate\donate.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-title>Donate</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-card>\n\n        <ion-card-header>\n\n            Pet Info\n\n        </ion-card-header>\n\n        <ion-card-content>\n\n            <ion-list>\n\n                <ion-item>\n\n                    <ion-label stacked>Name</ion-label>\n\n                    <ion-input type="text" [(ngModel)]="doacao.Animal.Nome"></ion-input>\n\n                </ion-item>\n\n                \n\n                <ion-item>\n\n                    <ion-label stacked>Class</ion-label>\n\n                    <ion-select [(ngModel)]="doacao.Animal.Filo">\n\n                        <ion-option value="MAMIFERO">Mammal</ion-option>\n\n                        <ion-option value="AVE">Bird</ion-option>\n\n                        <ion-option value="PEIXE">Fish</ion-option>\n\n                        <ion-option value="REPTIL">Reptile</ion-option>\n\n                        <ion-option value="INVERTEBRADO">Amphibian</ion-option>\n\n                        <ion-option value="ARTROPODE">Arthropod</ion-option>\n\n                    </ion-select>\n\n                </ion-item>\n\n            \n\n                <ion-item>\n\n                    <ion-label stacked>Specie</ion-label>\n\n                    <ion-input type="text" [(ngModel)]="doacao.Animal.Especie"></ion-input>\n\n                </ion-item>\n\n                \n\n                <ion-item>\n\n                    <ion-label stacked>Date of birth</ion-label>\n\n                    <ion-input type="date" [(ngModel)]="doacao.Animal.DataNascimento"></ion-input>\n\n                </ion-item>\n\n            \n\n                <ion-item>\n\n                    <ion-label stacked>Weight</ion-label>\n\n                    <ion-input type="number" [(ngModel)]="doacao.Animal.Peso"></ion-input>\n\n                </ion-item>\n\n            \n\n                <ion-item>\n\n                    <ion-label stacked>About</ion-label>\n\n                    <ion-textarea [(ngModel)]="doacao.Animal.Descricao"></ion-textarea>\n\n                </ion-item>                \n\n            </ion-list>\n\n            <button ion-button icon-left full (click)="openGallery()">\n\n                <ion-icon name="images"></ion-icon>\n\n                Photos\n\n            </button>\n\n        </ion-card-content>\n\n        <ion-grid>\n\n            <ion-row>\n\n                <ion-col>\n\n                    <button ion-button full color="danger" navPop>Cancel</button>\n\n                </ion-col>\n\n                <ion-col>\n\n                    <button ion-button full color="secondary" (click)="sendDonate(doacao)">Confirm</button>\n\n                </ion-col>\n\n            </ion-row>            \n\n        </ion-grid>\n\n    </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Git\anms-mobile\src\pages\animals\donate\donate.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3__app_services_usuario_service__["a" /* UsuarioService */],
@@ -587,7 +591,8 @@ var DonatePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_rest_service__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_toast_service__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_usuario__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_services_toast_service__ = __webpack_require__(42);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -601,12 +606,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SignUpModal = /** @class */ (function () {
     function SignUpModal(viewCtrl, restService, toastService) {
         this.viewCtrl = viewCtrl;
         this.restService = restService;
         this.toastService = toastService;
+        this.usuario = new __WEBPACK_IMPORTED_MODULE_3__models_usuario__["a" /* Usuario */];
+        this.usuario = new __WEBPACK_IMPORTED_MODULE_3__models_usuario__["a" /* Usuario */]();
     }
+    SignUpModal.prototype.ionViewCanEnter = function () {
+        this.usuario = new __WEBPACK_IMPORTED_MODULE_3__models_usuario__["a" /* Usuario */]();
+    };
     SignUpModal.prototype.dismiss = function (usuario) {
         this.viewCtrl.dismiss(usuario || null);
     };
@@ -621,11 +632,11 @@ var SignUpModal = /** @class */ (function () {
     };
     SignUpModal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'app-signup',template:/*ion-inline-start:"C:\Users\rudsonm\Git\anms-mobile\src\pages\home\signup\signup.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-title text-center>\n\n            Sign Up\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-list>\n\n        <ion-item>\n\n            <ion-label>Are you a Institution?</ion-label>\n\n            <ion-toggle checked="false" [(ngModel)]="usuario.Tipo"></ion-toggle>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label floating>Name</ion-label>\n\n            <ion-input type="text" [(ngModel)]="usuario.Nome"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label floating>Email</ion-label>\n\n            <ion-input type="email" [(ngModel)]="usuario.Email"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label floating *ngIf="!usuario.Tipo">CPF</ion-label>\n\n            <ion-label floating *ngIf="usuario.Tipo">CNPJ</ion-label>\n\n            <ion-input type="text" [(ngModel)]="usuario.CpfCnpj"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label floating>Password</ion-label>\n\n            <ion-input type="password" [(ngModel)]="usuario.Senha"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label floating>Confirm</ion-label>\n\n            <ion-input type="password" [(ngModel)]="senhaConfirmacao" [style.color]="usuario.Senha == senhaConfirmacao ? \'secondary\' : danger"></ion-input>\n\n        </ion-item>\n\n    </ion-list>\n\n    <ion-row>\n\n        <ion-col>\n\n            <button ion-button icon-left full>\n\n                <ion-icon name="images"></ion-icon>\n\n                Picture\n\n            </button>\n\n        </ion-col>        \n\n    </ion-row>\n\n    <ion-row>\n\n        <ion-col>\n\n            <button ion-button full color="danger" (click)="dismiss()">\n\n                Cancel\n\n            </button>\n\n        </ion-col>\n\n        <ion-col>\n\n            <button ion-button full color="secondary" (click)="createUser(usuario)">\n\n                Create\n\n            </button>\n\n        </ion-col>\n\n    </ion-row>\n\n</ion-content>'/*ion-inline-end:"C:\Users\rudsonm\Git\anms-mobile\src\pages\home\signup\signup.html"*/
+            selector: 'app-signup',template:/*ion-inline-start:"C:\Git\anms-mobile\src\pages\home\signup\signup.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <ion-title text-center>\n\n            Sign Up\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <ion-list>\n\n        <ion-item>\n\n            <ion-label>Are you a Institution?</ion-label>\n\n            <ion-toggle checked="false" [(ngModel)]="usuario.Tipo"></ion-toggle>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label floating>Name</ion-label>\n\n            <ion-input type="text" [(ngModel)]="usuario.Nome"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label floating>Email</ion-label>\n\n            <ion-input type="email" [(ngModel)]="usuario.Email"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label floating *ngIf="!usuario.Tipo">CPF</ion-label>\n\n            <ion-label floating *ngIf="usuario.Tipo">CNPJ</ion-label>\n\n            <ion-input type="text" [(ngModel)]="usuario.CpfCnpj"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label floating>Password</ion-label>\n\n            <ion-input type="password" [(ngModel)]="usuario.Senha"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label floating>Confirm</ion-label>\n\n            <ion-input type="password" [(ngModel)]="senhaConfirmacao" [style.color]="usuario.Senha == senhaConfirmacao ? \'secondary\' : danger"></ion-input>\n\n        </ion-item>\n\n    </ion-list>\n\n    <ion-row>\n\n        <ion-col>\n\n            <button ion-button icon-left full>\n\n                <ion-icon name="images"></ion-icon>\n\n                Picture\n\n            </button>\n\n        </ion-col>        \n\n    </ion-row>\n\n    <ion-row>\n\n        <ion-col>\n\n            <button ion-button full color="danger" (click)="dismiss()">\n\n                Cancel\n\n            </button>\n\n        </ion-col>\n\n        <ion-col>\n\n            <button ion-button full color="secondary" (click)="createUser(usuario)">\n\n                Create\n\n            </button>\n\n        </ion-col>\n\n    </ion-row>\n\n</ion-content>'/*ion-inline-end:"C:\Git\anms-mobile\src\pages\home\signup\signup.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_2__app_services_rest_service__["a" /* RestService */],
-            __WEBPACK_IMPORTED_MODULE_3__app_services_toast_service__["a" /* ToastService */]])
+            __WEBPACK_IMPORTED_MODULE_4__app_services_toast_service__["a" /* ToastService */]])
     ], SignUpModal);
     return SignUpModal;
 }());
@@ -664,8 +675,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_animals_animals__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_animals_animal_animal__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_http__ = __webpack_require__(289);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pipes_age_pipe__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_http__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pipes_age_pipe__ = __webpack_require__(291);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_usuario_service__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_auth_service__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_rest_service__ = __webpack_require__(30);
@@ -792,7 +803,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\rudsonm\Git\anms-mobile\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\rudsonm\Git\anms-mobile\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Git\anms-mobile\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Git\anms-mobile\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -871,7 +882,22 @@ var Animal = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 290:
+/***/ 289:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Usuario; });
+var Usuario = /** @class */ (function () {
+    function Usuario() {
+    }
+    return Usuario;
+}());
+
+//# sourceMappingURL=usuario.js.map
+
+/***/ }),
+
+/***/ 291:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -931,7 +957,7 @@ var RestService = /** @class */ (function () {
     function RestService(http, loading) {
         this.http = http;
         this.loading = loading;
-        this.url = "http://localhost:49664/api/";
+        this.url = "http://localhost:23456/api/";
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
     }
     RestService.prototype.addHeader = function (type, content) {
@@ -1040,7 +1066,7 @@ var UsuarioService = /** @class */ (function () {
         this.http = http;
         this.authService = authService;
         this.restService = restService;
-        this.url = "localhost:49664/api/usuarios";
+        this.url = "localhost:23456/api/usuarios";
     }
     Object.defineProperty(UsuarioService.prototype, "usuario", {
         get: function () {
